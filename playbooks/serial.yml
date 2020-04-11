@@ -1,0 +1,14 @@
+--- # Serial execution Example
+- hosts: all
+  max_fail_percentage: 1
+  serial: 
+  - 5
+  - "30%"
+  - "50%"
+  become: yes
+  tasks:
+    - name: Install elinks
+      package:
+        name: elinks
+        state: latest
+

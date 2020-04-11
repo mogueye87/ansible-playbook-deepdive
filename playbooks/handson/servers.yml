@@ -1,0 +1,40 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install cli web client
+      yum:
+        name: elinks
+        state: latest
+    - name: Create user xyzcorp_audit
+      user:
+        name: xyzcorp_audit
+        state: present
+    - name: copy file from  /home/ansible/motd
+      copy:
+        src: /home/ansible/motd
+        dest: /etc/
+    - name: copy file from  /home/ansible/motd
+      copy:
+        src: /home/ansible/issue
+        dest: /etc/
+
+- hosts: network
+  become: yes
+  tasks:
+    - name: Install nmap-ncat
+      yum:
+        name: nmap-ncat
+        state: latest
+    - name: Create user xyzcorp_network
+      user:
+        name: xyzcorp_network
+        state: present
+
+- hosts: sysadmin
+  become: yes
+  tasks:
+    - name: copy file from  /home/ansible/scripts.tgz
+      copy:
+        src: /home/ansible/scripts.tgz
+        dest: /mnt/storage

@@ -1,0 +1,28 @@
+user:
+- bob
+- john
+- cindy
+
+user:
+  name: bob
+  job: engineer
+  salary: 100000
+
+include_newlines: |
+  type some text
+  even more text
+  the last of the text
+
+fold_newlines: > 
+  type some text
+  more text
+  last of the text
+
+
+[] {} : > |
+
+"{{ var_name }}"
+
+become: yes
+
+version: "1.0"
